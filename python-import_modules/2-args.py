@@ -11,3 +11,4 @@ else:
         print(f"{num_args} arguments:")
     for index, value in enumerate(argv[1:]):
         print(f"{index + 1}: {value}")
+        
