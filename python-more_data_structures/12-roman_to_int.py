@@ -1,21 +1,22 @@
 #!/usr/bin/python3
-
-# Définir un dictionnaire qui associe chaque symbole romain à sa valeur num
-valeurs = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
-
-
 def roman_to_int(roman_string):
-    # Initialiser le résultat à 0
-    resultat = 0
-    # Parcourir la chaîne romaine de gauche à droite
+    """Converts a roman numeral to an integer."""
+    if (not isinstance(roman_string, str) or
+            roman_string is None):
+        return (0)
+
+    roman_dict = {"I": 1, "V": 5, "X": 10,
+                  "L": 50, "C": 100, "D": 500, "M": 1000}
+    num = 0
+
     for i in range(len(roman_string)):
-        # Récupérer la valeur du symbole courant
-        valeur = valeurs[roman_string[i]]
-        # Si symbole courant +petit que symbole suivant =le soustraire
-        if i < len(roman_string) - 1 and valeur < valeurs[roman_string[i + 1]]:
-            resultat -= valeur
-        # Sinon, il faut l'ajouter
+        if roman_dict.get(roman_string[i], 0) == 0:
+            return (0)
+
+        if (i != (len(roman_string) - 1) and
+                roman_dict[roman_string[i]] < roman_dict[roman_string[i + 1]]):
+            num += roman_dict[roman_string[i]] * -1
+
         else:
-            resultat += valeur
-    # Retourner le résultat
-    return resultat
+            num += roman_dict[roman_string[i]]
+    return (num)
