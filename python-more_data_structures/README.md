@@ -66,7 +66,7 @@
     • You can assume all students have a different score
     • You are not allowed to import any 
 
-Write a function that returns a list with all values multiplied by a number without using any loops.
+11-multiply_list_map.py - Write a function that returns a list with all values multiplied by a number without using any loops.
     • Prototype: def multiply_list_map(my_list=[], number=0):
     • Returns a new list:
     -- Same length as my_list
@@ -75,3 +75,8 @@ Write a function that returns a list with all values multiplied by a number with
     • You are not allowed to import any module
     • You have to use map
     • Your file should be max 3 lines
+
+12-roman_to_int.py - Create a function def roman_to_int(roman_string): that converts a Roman numeral to an integer.
+    • You can assume the number will be between 1 to 3999.
+    • def roman_to_int(roman_string) must return an integer
+    • If the roman_string is not a string or None, return 0
