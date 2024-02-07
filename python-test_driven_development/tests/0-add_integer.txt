@@ -1,0 +1,23 @@
+import the module:
+
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+test 2 entiers
+    >>> add_integer(1, 1)
+    2
+
+Negatif 1 :
+    >>> add_integer(-2, 1)
+    -1
+
+Negatif 2 :
+    >>> add_integer(10, -2)
+    8
+
+    Negatif 12 :
+    >>> add_integer(-2, -1)
+
+error string :
+    >>> add_integer("Hola")
+    Traceback (most recent call last):
+    TypeError: a must be an integer
