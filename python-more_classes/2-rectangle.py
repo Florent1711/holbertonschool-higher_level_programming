@@ -1,71 +1,71 @@
 #!/usr/bin/python3
+"""
+A class Rectangle that defines a rectangle
+"""
+
 
 class Rectangle:
+    """
+    A class Rectangle that defines a rectangle
+    """
+
     def __init__(self, width=0, height=0):
-        """
-        Initializes a Rectangle instance with optional width and height.
-        Args:
-            width (int): Width of the rectangle (default is 0).
-            height (int): Height of the rectangle (default is 0).
-        """
+
         self.width = width
         self.height = height
 
     @property
     def width(self):
-        """
-        Getter method for retrieving the width.
-        """
-        return self._width
+
+        return self.__width
 
     @width.setter
     def width(self, value):
-        """
-        Setter method for setting the width.
-        Args:
-            value (int): New width value.
-        Raises:
-            TypeError: If value is not an integer.
-            ValueError: If value is less than 0.
-        """
-        if not isinstance(value, int):
-            raise TypeError("Width must be an integer")
-        if value < 0:
-            raise ValueError("Width must be >= 0")
-        self._width = value
+        self.__check_valid_width(value)
+        self.__width = value
 
     @property
     def height(self):
-        """
-        Getter method for retrieving the height.
-        """
-        return self._height
+        return self.__height
 
     @height.setter
     def height(self, value):
-        """
-        Setter method for setting the height.
-        Args:
-            value (int): New height value.
-        Raises:
-            TypeError: If value is not an integer.
-            ValueError: If value is less than 0.
-        """
-        if not isinstance(value, int):
-            raise TypeError("Height must be an integer")
-        if value < 0:
-            raise ValueError("Height must be >= 0")
-        self._height = value
+
+        self.__check_valid_height(value)
+        self.__height = value
+
+    def __check_valid_width(self, width):
+
+        if self.__check_int_value(width) is False:
+            raise TypeError('width must be an integer')
+
+        if self.__check_positive_value(width) is False:
+            raise ValueError('width must be >= 0')
+
+    def __check_valid_height(self, height):
+        if self.__check_int_value(height) is False:
+            raise TypeError('height must be an integer')
+
+        if self.__check_positive_value(height) is False:
+            raise ValueError('height must be >= 0')
+
+    def __check_int_value(self, value):
+        if type(value) is int:
+            return True
+
+        return False
+
+    def __check_positive_value(self, value):
+        if value >= 0:
+            return True
+
+        return False
 
     def area(self):
-        """
-        Calculates and returns the area of the rectangle.
-        """
-        return self.width * self.height
+        return self.__width * self.__height
 
     def perimeter(self):
-        """
-        Calculates and returns the perimeter of the rectangle.
-        If width or height is equal to 0, perimeter is 0.
-        """
-        return 2 * (self.width + self.height)
+        if self.__width == 0 or self.__height == 0:
+            return 0
+
+        return self.__width * 2 + self.__height * 2
