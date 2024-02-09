@@ -1,0 +1,7 @@
+import the module:
+
+    >>> print_square = __import__('4-print_square').print_square
+
+test 2 entiers
+    >>> add_integer(1, 1)
+    2

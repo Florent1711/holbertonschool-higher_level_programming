@@ -1,0 +1,7 @@
+import the module:
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+test 2 entiers
+    >>> add_integer(1, 1)
+    2
