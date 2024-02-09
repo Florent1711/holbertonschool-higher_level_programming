@@ -5,6 +5,6 @@ Define a Rectangle class
 
 class Rectangle:
     """
-    Represent a rectangle
+    An empty class rectangle that defines a rectangle
     """
     pass
