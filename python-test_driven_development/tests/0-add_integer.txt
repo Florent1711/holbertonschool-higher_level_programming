@@ -16,6 +16,7 @@ Negatif 2 :
 
     Negatif 12 :
     >>> add_integer(-2, -1)
+    -3
 
 error string :
     >>> add_integer("Hola")
