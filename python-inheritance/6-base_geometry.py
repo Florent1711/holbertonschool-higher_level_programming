@@ -1,10 +1,13 @@
 #!/usr/bin/python3
-"""Defines a base geometry class BaseGeometry."""
+"""module evaluate geometry using maths operations"""
 
 
 class BaseGeometry:
-    """Represent base geometry."""
+    """Geometry class with maths operations"""
+    def __init__(self):
+        """initializes new object of BaseGeometry Class"""
+        pass
 
     def area(self):
-        """Not implemented."""
-        raise Exception("area() is not implemented yet")
+        """defines area of shape"""
+        raise Exception("area() is not implemented")
