@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""This module defines a class named BaseGeometry"""
+BaseGeometry = __import__('6-base_geometry').BaseGeometry
 
+bg = BaseGeometry()
 
-class BaseGeometry:
-    """This defines a class named BaseGeometry"""
-    def area(self):
-        """public instance method"""
-        raise Exception("area() is not implemented")
+try:
+    print(bg.area())
+except Exception as e:
+    print("[{}] {}".format(e.__class__.__name__, e))
