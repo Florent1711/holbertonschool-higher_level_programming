@@ -72,7 +72,7 @@
         -- Otherwise, all attributes must be retrieved
     • You are not allowed to import any module
 
-Write a class Student that defines a student by: (based on 10-student.py)
+11-student.py - Write a class Student that defines a student by: (based on 10-student.py)
     • Public instance attributes:
         -- first_name
         -- last_name
@@ -87,3 +87,11 @@ Write a class Student that defines a student by: (based on 10-student.py)
         -- A dictionary value will be the value of the public attribute
     • You are not allowed to import any module
     Now, you have a simple implementation of a serialization and deserialization mechanism (concept of representation of an object to another format, without losing any information and allow us to rebuild an object based on this representation)
+
+12-pascal_triangle.py - Technical interview preparation:
+    - You are not allowed to google anything
+    - Whiteboard first
+    -> Create a function def pascal_triangle(n): that returns a list of lists of integers representing the Pascal’s triangle of n:
+        • Returns an empty list if n <= 0
+        • You can assume n will be always an integer
+        • You are not allowed to import any module
