@@ -1,7 +1,10 @@
 #!/usr/bin/python3
+""" Base """
+
 
 class Base:
     """New class base"""
+
 
     __nb_objects = 0
 
