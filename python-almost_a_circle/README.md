@@ -106,3 +106,22 @@ models/square.py - Write the class Square that inherits from Rectangle:
     • You must use the static method to_json_string (created before)
     • You must overwrite the file if it already exists
 
+17- JSON string to dictionary - Update the class Base by adding the static method def from_json_string(json_string): that returns the list of the JSON string representation json_string:
+    • json_string is a string representing a list of dictionaries
+    • If json_string is None or empty, return an empty list
+    • Otherwise, return the list represented by json_string
+
+18- Dictionary to Instance - Update the class Base by adding the class method def create(cls, **dictionary): that returns an instance with all attributes already set:
+    • **dictionary can be thought of as a double pointer to a dictionary
+    • To use the update method to assign all attributes, you must create a “dummy” instance before:
+        -- Create a Rectangle or Square instance with “dummy” mandatory attributes (width, height, size, etc.)
+        -- Call update instance method to this “dummy” instance to apply your real values
+    • You must use the method def update(self, *args, **kwargs)
+    • **dictionary must be used as **kwargs of the method update
+    • You are not allowed to use eval
+
+19- File to instances - Update the class Base by adding the class method def load_from_file(cls): that returns a list of instances:
+    • The filename must be: <Class name>.json - example: Rectangle.json
+    • If the file doesn’t exist, return an empty list
+    • Otherwise, return a list of instances - the type of these instances depends on cls (current class using this method)
+    • You must use the from_json_string and create methods (implemented previously)
