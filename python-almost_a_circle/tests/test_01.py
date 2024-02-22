@@ -5,3 +5,7 @@ class TestString(unittest.TestCase):
         string = "hello"
         expected_value = "Hello"
         self.assertEqual(string.capitalize(), expected_value)
+
+
+if __name__ == "__main__":
+    unittest.main()
