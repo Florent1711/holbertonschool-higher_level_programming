@@ -78,3 +78,31 @@ models/square.py - Write the class Square that inherits from Rectangle:
     • **kwargs must be skipped if *args exists and is not empty
     • Each key in this dictionary represents an attribute to the instance
 
+13- Rectangle instance to dictionary representation - Update the class Rectangle by adding the public method def to_dictionary(self): that returns the dictionary representation of a Rectangle:
+    This dictionary must contain:
+    • id
+    • width
+    • height
+    • x
+    • y
+
+14- Square instance to dictionary representation - Update the class Square by adding the public method def to_dictionary(self): that returns the dictionary representation of a Square:
+    This dictionary must contain:
+    • id
+    • size
+    • x
+    • y
+
+15- Dictionary to JSON string - JSON is one of the standard formats for sharing data representation.
+    • Update the class Base by adding the static method def to_json_string(list_dictionaries): that returns the JSON string representation of list_dictionaries:
+    • list_dictionaries is a list of dictionaries
+    • If list_dictionaries is None or empty, return the string: "[]"
+    • Otherwise, return the JSON string representation of list_dictionaries
+
+16- JSON string to file - Update the class Base by adding the class method def save_to_file(cls, list_objs): that writes the JSON string representation of list_objs to a file:
+    • list_objs is a list of instances who inherits of Base - example: list of Rectangle or list of Square instances
+    • If list_objs is None, save an empty list
+    • The filename must be: <Class name>.json - example: Rectangle.json
+    • You must use the static method to_json_string (created before)
+    • You must overwrite the file if it already exists
+
