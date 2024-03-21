@@ -1,34 +1,21 @@
 #!/usr/bin/python3
-import MySQLdb
-import sys
+"""0x0F. Python - Object-relational mapping - task 0. Get all states"""
 
-def list_states(username, password, db_name):
-    try:
-        # Connect to MySQL server
-        db = MySQLdb.connect(host="localhost", port=3306,
-                             user=username, passwd=password, db=db_name)
-        cursor = db.cursor()
+if __name__ == '__main__':
+    import sys
+    import MySQLdb
 
-        # Execute SQL query to retrieve states
-        cursor.execute("SELECT * FROM states ORDER BY id ASC")
-        states = cursor.fetchall()
-
-        # Display results
-        for state in states:
-            print(state)
-
-        # Close the cursor and database connection
-        cursor.close()
-        db.close()
-
-    except MySQLdb.Error as e:
-        print("Error connecting to MySQL:", e)
-        sys.exit(1)
-
-if __name__ == "__main__":
     if len(sys.argv) != 4:
-        print("Usage: {} <username> <password> <db_name>".format(sys.argv[0]))
-        sys.exit(1)
+        sys.exit('Use: 0-select_states.py <mysql username> <mysql password>'
+                 ' <database name>')
 
-    username, password, db_name = sys.argv[1], sys.argv[2], sys.argv[3]
-    list_states(username, password, db_name)
+    conn = MySQLdb.connect(host='localhost', port=3306, user=sys.argv[1],
+                           passwd=sys.argv[2], db=sys.argv[3], charset='utf8')
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM states ORDER BY id ASC")
+    query_rows = cur.fetchall()
+    for row in query_rows:
+        print(row)
+    cur.close()
+    conn.close()
+    
