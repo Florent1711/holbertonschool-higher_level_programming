@@ -1,34 +1,36 @@
 #!/usr/bin/python3
+"""Display name argument of states table"""
 import MySQLdb
-from sys import argv
+import sys
 
-def main():
-    # Unpack arguments
-    mysql_username, mysql_password, database_name, state_name_searched = argv[1:]
 
-    # Connect to the MySQL database
-    db = MySQLdb.connect(host="localhost", port=3306, user="root",
-                         password="Florent", db="hbtn_0e_0_usa")
+def filter_names():
+    """Takes arguments argv to list from database
+    Only lists with states that matches name argument
 
-    # Create a cursor object
+    Arguments:
+        argv[1]: mysql username
+        argv[2]: mysql password
+        argv[3]: database name
+        argv[4]: state name
+    """
+    db = MySQLdb.connect(host="localhost",
+                         port=3306,
+                         user=sys.argv[1],
+                         passwd=sys.argv[2],
+                         db=sys.argv[3])
+
     cur = db.cursor()
 
-    # Create the SQL query
-    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
-
-    # Execute the SQL query
-    cur.execute(query, (state_name_searched,))
-
-    # Fetch all the results
+    cur.execute("SELECT * FROM states WHERE BINARY name='{:s}'\
+                ORDER BY id ASC".format(sys.argv[4]))
     rows = cur.fetchall()
+    for i in rows:
+        print(i)
 
-    # Print the results
-    for row in rows:
-        print(row)
-
-    # Close the cursor and the connection
     cur.close()
     db.close()
 
+
 if __name__ == "__main__":
-    main()
+    filter_names()
