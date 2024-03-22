@@ -1,32 +1,34 @@
 #!/usr/bin/python3
-
 import MySQLdb
-import sys
+from sys import argv
 
-# Connect to the MySQL database
-db = MySQLdb.connect(
-   host="localhost",
-   port=3306,
-   user=sys.argv[1],
-   passwd=sys.argv[2],
-   db=sys.argv[3]
-)
+def main():
+    # Unpack arguments
+    mysql_username, mysql_password, database_name, state_name_searched = argv[1:]
 
-# Create a cursor object
-cursor = db.cursor()
+    # Connect to the MySQL database
+    db = MySQLdb.connect(host="localhost", port=3306, user="root",
+                         password="Florent", db="hbtn_0e_0_usa")
 
-# Build the query using parameterized formatting to prevent SQL injection
-state_name = sys.argv[4]
-sql = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
+    # Create a cursor object
+    cur = db.cursor()
 
-# Execute the query
-cursor.execute(sql, (state_name,))
+    # Create the SQL query
+    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
 
-# Fetch and display the results
-rows = cursor.fetchall()
-for row in rows:
-   print(row)
+    # Execute the SQL query
+    cur.execute(query, (state_name_searched,))
 
-# Close the cursor and database connection
-cursor.close()
-db.close()
+    # Fetch all the results
+    rows = cur.fetchall()
+
+    # Print the results
+    for row in rows:
+        print(row)
+
+    # Close the cursor and the connection
+    cur.close()
+    db.close()
+
+if __name__ == "__main__":
+    main()
