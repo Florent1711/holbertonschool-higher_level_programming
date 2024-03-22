@@ -5,8 +5,6 @@ the specified MySQL database.
 """
 import sys
 import MySQLdb
-
-
 def get_all_states(mysql_username, mysql_password, database_name):
     """
     Retrieve and print all states from the database.
@@ -18,8 +16,8 @@ def get_all_states(mysql_username, mysql_password, database_name):
         None
     """
     # Connect to the MySQL server
-    db = MySQLdb.connect(host='localhost', port=3306, user=mysql_username,
-                         passwd=mysql_password, db=database_name)
+    db = MySQLdb.connect(host='localhost', port=3306, user="root",
+                         passwd="Florent", db="hbtn_0e_0_usa")
     cursor = db.cursor()
     # Execute the SQL query
     cursor.execute("SELECT * FROM states ORDER BY id ASC;")
@@ -29,11 +27,9 @@ def get_all_states(mysql_username, mysql_password, database_name):
     # Close the cursor and database connection
     cursor.close()
     db.close()
-
-
 if __name__ == "__main__":
     # Extract command-line arguments
-    mysql_username, mysql_password, database_name = sys.argv[1], 
-    sys.argv[2], sys.argv[3]
+    mysql_username, mysql_password, database_name = sys.argv[1],\
+        sys.argv[2], sys.argv[3]
     # Call the function to get all states
     get_all_states(mysql_username, mysql_password, database_name)
